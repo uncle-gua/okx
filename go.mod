@@ -1,5 +1,5 @@
-module github.com/amir-the-h/okex
+module github.com/uncle-gua/okx
 
 go 1.21
 
-require github.com/gorilla/websocket v1.4.2
+require github.com/gorilla/websocket v1.5.3

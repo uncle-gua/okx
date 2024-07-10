@@ -1,9 +1,9 @@
 package public
 
 import (
-	"github.com/amir-the-h/okex/events"
-	"github.com/amir-the-h/okex/models/market"
-	"github.com/amir-the-h/okex/models/publicdata"
+	"github.com/uncle-gua/okx/events"
+	"github.com/uncle-gua/okx/models/market"
+	"github.com/uncle-gua/okx/models/publicdata"
 )
 
 type (

@@ -2,10 +2,11 @@ package rest
 
 import (
 	"encoding/json"
-	"github.com/amir-the-h/okex"
-	requests "github.com/amir-the-h/okex/requests/rest/public"
-	responses "github.com/amir-the-h/okex/responses/public_data"
 	"net/http"
+
+	"github.com/uncle-gua/okx"
+	requests "github.com/uncle-gua/okx/requests/rest/public"
+	responses "github.com/uncle-gua/okx/responses/public_data"
 )
 
 // PublicData
@@ -26,7 +27,7 @@ func NewPublicData(c *ClientRest) *PublicData {
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-instruments
 func (c *PublicData) GetInstruments(req requests.GetInstruments) (response responses.GetInstruments, err error) {
 	p := "/api/v5/public/instruments"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -43,7 +44,7 @@ func (c *PublicData) GetInstruments(req requests.GetInstruments) (response respo
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-instruments
 func (c *PublicData) GetDeliveryExerciseHistory(req requests.GetDeliveryExerciseHistory) (response responses.GetDeliveryExerciseHistory, err error) {
 	p := "/api/v5/public/delivery-exercise-history"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -60,7 +61,7 @@ func (c *PublicData) GetDeliveryExerciseHistory(req requests.GetDeliveryExercise
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-open-interest
 func (c *PublicData) GetOpenInterest(req requests.GetOpenInterest) (response responses.GetOpenInterest, err error) {
 	p := "/api/v5/public/open-interest"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -77,7 +78,7 @@ func (c *PublicData) GetOpenInterest(req requests.GetOpenInterest) (response res
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-limit-price
 func (c *PublicData) GetLimitPrice(req requests.GetLimitPrice) (response responses.GetLimitPrice, err error) {
 	p := "/api/v5/public/price-limit"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -94,7 +95,7 @@ func (c *PublicData) GetLimitPrice(req requests.GetLimitPrice) (response respons
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-option-market-data
 func (c *PublicData) GetOptionMarketData(req requests.GetOptionMarketData) (response responses.GetOptionMarketData, err error) {
 	p := "/api/v5/public/opt-summary"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -111,7 +112,7 @@ func (c *PublicData) GetOptionMarketData(req requests.GetOptionMarketData) (resp
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-estimated-delivery-Exercise-price
 func (c *PublicData) GetEstimatedDeliveryExercisePrice(req requests.GetEstimatedDeliveryExercisePrice) (response responses.GetEstimatedDeliveryExercisePrice, err error) {
 	p := "/api/v5/public/estimated-price"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -128,7 +129,7 @@ func (c *PublicData) GetEstimatedDeliveryExercisePrice(req requests.GetEstimated
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-discount-rate-and-interest-free-quota
 func (c *PublicData) GetDiscountRateAndInterestFreeQuota(req requests.GetDiscountRateAndInterestFreeQuota) (response responses.GetDiscountRateAndInterestFreeQuota, err error) {
 	p := "/api/v5/public/discount-rate-interest-free-quota"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -161,7 +162,7 @@ func (c *PublicData) GetSystemTime() (response responses.GetSystemTime, err erro
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-liquidation-orders
 func (c *PublicData) GetLiquidationOrders(req requests.GetLiquidationOrders) (response responses.GetLiquidationOrders, err error) {
 	p := "/api/v5/public/liquidation-orders"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -180,7 +181,7 @@ func (c *PublicData) GetLiquidationOrders(req requests.GetLiquidationOrders) (re
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-mark-price
 func (c *PublicData) GetMarkPrice(req requests.GetMarkPrice) (response responses.GetMarkPrice, err error) {
 	p := "/api/v5/public/mark-price"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -197,7 +198,7 @@ func (c *PublicData) GetMarkPrice(req requests.GetMarkPrice) (response responses
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-position-tiers
 func (c *PublicData) GetPositionTiers(req requests.GetPositionTiers) (response responses.GetPositionTiers, err error) {
 	p := "/api/v5/public/position-tiers"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return
@@ -229,7 +230,7 @@ func (c *PublicData) GetInterestRateAndLoanQuota() (response responses.GetIntere
 // https://www.okex.com/docs-v5/en/#rest-api-public-data-get-underlying
 func (c *PublicData) GetUnderlying(req requests.GetUnderlying) (response responses.GetUnderlying, err error) {
 	p := "/api/v5/public/underlying"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, false, m)
 	if err != nil {
 		return

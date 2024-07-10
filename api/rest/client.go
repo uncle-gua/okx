@@ -7,12 +7,13 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"github.com/amir-the-h/okex"
-	requests "github.com/amir-the-h/okex/requests/rest/public"
-	responses "github.com/amir-the-h/okex/responses/public_data"
 	"net/http"
 	"strings"
 	"time"
+
+	okex "github.com/uncle-gua/okx"
+	requests "github.com/uncle-gua/okx/requests/rest/public"
+	responses "github.com/uncle-gua/okx/responses/public_data"
 )
 
 // ClientRest is the rest api client

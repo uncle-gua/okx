@@ -1,8 +1,8 @@
 package market
 
 import (
-	"github.com/amir-the-h/okex/models/market"
-	"github.com/amir-the-h/okex/responses"
+	"github.com/uncle-gua/okx/models/market"
+	"github.com/uncle-gua/okx/responses"
 )
 
 type (

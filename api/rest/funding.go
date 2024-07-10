@@ -2,11 +2,12 @@ package rest
 
 import (
 	"encoding/json"
-	"github.com/amir-the-h/okex"
-	requests "github.com/amir-the-h/okex/requests/rest/funding"
-	responses "github.com/amir-the-h/okex/responses/funding"
 	"net/http"
 	"strings"
+
+	"github.com/uncle-gua/okx"
+	requests "github.com/uncle-gua/okx/requests/rest/funding"
+	responses "github.com/uncle-gua/okx/responses/funding"
 )
 
 // Funding
@@ -46,7 +47,7 @@ func (c *Funding) GetCurrencies() (response responses.GetCurrencies, err error) 
 // https://www.okex.com/docs-v5/en/#rest-api-funding-get-balance
 func (c *Funding) GetBalance(req requests.GetBalance) (response responses.GetBalance, err error) {
 	p := "/api/v5/asset/balances"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	if len(req.Ccy) > 0 {
 		m["ccy"] = strings.Join(req.Ccy, ",")
 	}
@@ -66,7 +67,7 @@ func (c *Funding) GetBalance(req requests.GetBalance) (response responses.GetBal
 // https://www.okex.com/docs-v5/en/#rest-api-funding-funds-transfer
 func (c *Funding) FundsTransfer(req requests.FundsTransfer) (response responses.FundsTransfer, err error) {
 	p := "/api/v5/asset/transfer"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodPost, p, true, m)
 	if err != nil {
 		return
@@ -83,7 +84,7 @@ func (c *Funding) FundsTransfer(req requests.FundsTransfer) (response responses.
 // https://www.okex.com/docs-v5/en/#rest-api-funding-asset-bills-details
 func (c *Funding) AssetBillsDetails(req requests.AssetBillsDetails) (response responses.AssetBillsDetails, err error) {
 	p := "/api/v5/asset/bills"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
@@ -100,7 +101,7 @@ func (c *Funding) AssetBillsDetails(req requests.AssetBillsDetails) (response re
 // https://www.okex.com/docs-v5/en/#rest-api-funding-get-deposit-address
 func (c *Funding) GetDepositAddress(req requests.GetDepositAddress) (response responses.GetDepositAddress, err error) {
 	p := "/api/v5/asset/deposit-address"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
@@ -117,7 +118,7 @@ func (c *Funding) GetDepositAddress(req requests.GetDepositAddress) (response re
 // https://www.okex.com/docs-v5/en/#rest-api-funding-get-deposit-history
 func (c *Funding) GetDepositHistory(req requests.GetDepositHistory) (response responses.GetDepositHistory, err error) {
 	p := "/api/v5/asset/deposit-history"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
@@ -134,7 +135,7 @@ func (c *Funding) GetDepositHistory(req requests.GetDepositHistory) (response re
 // https://www.okex.com/docs-v5/en/#rest-api-funding-withdrawal
 func (c *Funding) Withdrawal(req requests.Withdrawal) (response responses.Withdrawal, err error) {
 	p := "/api/v5/asset/withdrawal"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodPost, p, true, m)
 	if err != nil {
 		return
@@ -151,7 +152,7 @@ func (c *Funding) Withdrawal(req requests.Withdrawal) (response responses.Withdr
 // https://www.okex.com/docs-v5/en/#rest-api-funding-get-withdrawal-history
 func (c *Funding) GetWithdrawalHistory(req requests.GetWithdrawalHistory) (response responses.GetWithdrawalHistory, err error) {
 	p := "/api/v5/asset/withdrawal-history"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
@@ -167,7 +168,7 @@ func (c *Funding) GetWithdrawalHistory(req requests.GetWithdrawalHistory) (respo
 // https://www.okex.com/docs-v5/en/#rest-api-funding-piggybank-purchase-redemption
 func (c *Funding) PiggyBankPurchaseRedemption(req requests.PiggyBankPurchaseRedemption) (response responses.PiggyBankPurchaseRedemption, err error) {
 	p := "/api/v5/asset/purchase_redempt"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodPost, p, true, m)
 	if err != nil {
 		return
@@ -183,7 +184,7 @@ func (c *Funding) PiggyBankPurchaseRedemption(req requests.PiggyBankPurchaseRede
 // https://www.okex.com/docs-v5/en/#rest-api-funding-get-piggybank-balance
 func (c *Funding) GetPiggyBankBalance(req requests.GetPiggyBankBalance) (response responses.GetPiggyBankBalance, err error) {
 	p := "/api/v5/asset/piggy-balance"
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return

@@ -1,9 +1,9 @@
 package sub_account
 
 import (
-	"github.com/amir-the-h/okex/models/account"
-	models "github.com/amir-the-h/okex/models/subaccount"
-	"github.com/amir-the-h/okex/responses"
+	"github.com/uncle-gua/okx/models/account"
+	models "github.com/uncle-gua/okx/models/subaccount"
+	"github.com/uncle-gua/okx/responses"
 )
 
 type (

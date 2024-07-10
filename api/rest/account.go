@@ -2,11 +2,12 @@ package rest
 
 import (
 	"encoding/json"
-	"github.com/amir-the-h/okex"
-	requests "github.com/amir-the-h/okex/requests/rest/account"
-	responses "github.com/amir-the-h/okex/responses/account"
 	"net/http"
 	"strings"
+
+	okex "github.com/uncle-gua/okx"
+	requests "github.com/uncle-gua/okx/requests/rest/account"
+	responses "github.com/uncle-gua/okx/responses/account"
 )
 
 // Account

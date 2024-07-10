@@ -2,10 +2,11 @@ package ws
 
 import (
 	"encoding/json"
-	"github.com/amir-the-h/okex"
-	"github.com/amir-the-h/okex/events"
-	"github.com/amir-the-h/okex/events/private"
-	requests "github.com/amir-the-h/okex/requests/ws/private"
+
+	"github.com/uncle-gua/okx"
+	"github.com/uncle-gua/okx/events"
+	"github.com/uncle-gua/okx/events/private"
+	requests "github.com/uncle-gua/okx/requests/ws/private"
 )
 
 // Private
@@ -29,22 +30,22 @@ func NewPrivate(c *ClientWs) *Private {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-private-channel-account-channel
 func (c *Private) Account(req requests.Account, ch ...chan *private.Account) error {
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	if len(ch) > 0 {
 		c.aCh = ch[0]
 	}
-	return c.Subscribe(true, []okex.ChannelName{"account"}, m)
+	return c.Subscribe(true, []okx.ChannelName{"account"}, m)
 }
 
 // UAccount
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-private-channel-account-channel
 func (c *Private) UAccount(req requests.Account, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.aCh = nil
 	}
-	return c.Unsubscribe(true, []okex.ChannelName{"account"}, m)
+	return c.Unsubscribe(true, []okx.ChannelName{"account"}, m)
 }
 
 // Position
@@ -52,22 +53,22 @@ func (c *Private) UAccount(req requests.Account, rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-private-channel-positions-channel
 func (c *Private) Position(req requests.Position, ch ...chan *private.Position) error {
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	if len(ch) > 0 {
 		c.pCh = ch[0]
 	}
-	return c.Subscribe(true, []okex.ChannelName{"positions"}, m)
+	return c.Subscribe(true, []okx.ChannelName{"positions"}, m)
 }
 
 // UPosition
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-private-channel-positions-channel
 func (c *Private) UPosition(req requests.Position, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.pCh = nil
 	}
-	return c.Unsubscribe(true, []okex.ChannelName{"positions"}, m)
+	return c.Unsubscribe(true, []okx.ChannelName{"positions"}, m)
 }
 
 // BalanceAndPosition
@@ -79,7 +80,7 @@ func (c *Private) BalanceAndPosition(ch ...chan *private.BalanceAndPosition) err
 	if len(ch) > 0 {
 		c.bnpCh = ch[0]
 	}
-	return c.Subscribe(true, []okex.ChannelName{"balance_and_position"}, m)
+	return c.Subscribe(true, []okx.ChannelName{"balance_and_position"}, m)
 }
 
 // UBalanceAndPosition unsubscribes a position channel
@@ -90,7 +91,7 @@ func (c *Private) UBalanceAndPosition(rCh ...bool) error {
 	if len(rCh) > 0 && rCh[0] {
 		c.bnpCh = nil
 	}
-	return c.Unsubscribe(true, []okex.ChannelName{"balance_and_position"}, m)
+	return c.Unsubscribe(true, []okx.ChannelName{"balance_and_position"}, m)
 }
 
 // Order
@@ -98,22 +99,22 @@ func (c *Private) UBalanceAndPosition(rCh ...bool) error {
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-private-channel-order-channel
 func (c *Private) Order(req requests.Order, ch ...chan *private.Order) error {
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	if len(ch) > 0 {
 		c.oCh = ch[0]
 	}
-	return c.Subscribe(true, []okex.ChannelName{"orders"}, m)
+	return c.Subscribe(true, []okx.ChannelName{"orders"}, m)
 }
 
 // UOrder
 //
 // https://www.okex.com/docs-v5/en/#websocket-api-private-channel-order-channel
 func (c *Private) UOrder(req requests.Order, rCh ...bool) error {
-	m := okex.S2M(req)
+	m := okx.S2M(req)
 	if len(rCh) > 0 && rCh[0] {
 		c.oCh = nil
 	}
-	return c.Unsubscribe(true, []okex.ChannelName{"orders"}, m)
+	return c.Unsubscribe(true, []okx.ChannelName{"orders"}, m)
 }
 
 func (c *Private) Process(data []byte, e *events.Basic) bool {

@@ -1,6 +1,6 @@
 package funding
 
-import "github.com/amir-the-h/okex"
+import okex "github.com/uncle-gua/okx"
 
 type (
 	GetBalance struct {

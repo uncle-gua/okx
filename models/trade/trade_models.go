@@ -1,7 +1,7 @@
 package trade
 
 import (
-	"github.com/amir-the-h/okex"
+	okex "github.com/uncle-gua/okx"
 )
 
 type (
