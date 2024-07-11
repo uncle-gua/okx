@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"strconv"
 	"time"
-
-	okex "github.com/uncle-gua/okx"
 )
 
 type (
@@ -18,29 +16,29 @@ type (
 	TakerVolume struct {
 		SellVol float64
 		BuyVol  float64
-		TS      okex.JSONTime
+		TS      int64
 	}
 	Ratio struct {
 		Ratio float64
-		TS    okex.JSONTime
+		TS    int64
 	}
 	InterestAndVolumeRatio struct {
 		Oi  float64
 		Vol float64
-		TS  okex.JSONTime
+		TS  int64
 	}
 	PutCallRatio struct {
 		OiRatio  float64
 		VolRatio float64
-		TS       okex.JSONTime
+		TS       int64
 	}
 	InterestAndVolumeExpiry struct {
 		CallOI  float64
 		PutOI   float64
 		CallVol float64
 		PutVol  float64
-		ExpTime okex.JSONTime
-		TS      okex.JSONTime
+		ExpTime int64
+		TS      int64
 	}
 	InterestAndVolumeStrike struct {
 		Strike  float64
@@ -48,7 +46,7 @@ type (
 		PutOI   float64
 		CallVol float64
 		PutVol  float64
-		TS      okex.JSONTime
+		TS      int64
 	}
 	TakerFlow struct {
 		CallBuyVol   float64
@@ -57,7 +55,7 @@ type (
 		PutSellVol   float64
 		CallBlockVol float64
 		PutBlockVol  float64
-		TS           okex.JSONTime
+		TS           int64
 	}
 )
 
@@ -80,7 +78,7 @@ func (c *TakerVolume) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	c.TS = timestamp
 
 	c.SellVol, err = strconv.ParseFloat(sellVol, 64)
 	if err != nil {
@@ -114,7 +112,7 @@ func (c *Ratio) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	c.TS = timestamp
 
 	c.Ratio, err = strconv.ParseFloat(ratio, 64)
 	if err != nil {
@@ -143,7 +141,7 @@ func (c *InterestAndVolumeRatio) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	c.TS = timestamp
 
 	if oi != "" {
 		c.Oi, err = strconv.ParseFloat(oi, 64)
@@ -180,7 +178,7 @@ func (c *PutCallRatio) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	c.TS = timestamp
 
 	if oi != "" {
 		c.OiRatio, err = strconv.ParseFloat(oi, 64)
@@ -217,13 +215,13 @@ func (c *InterestAndVolumeExpiry) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	c.TS = timestamp
 
 	exp, err := time.Parse("20060102", expTime)
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.ExpTime) = exp
+	c.ExpTime = exp.UnixMilli()
 
 	if callOI != "" {
 		c.CallOI, err = strconv.ParseFloat(callOI, 64)
@@ -272,7 +270,7 @@ func (c *InterestAndVolumeStrike) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	c.TS = timestamp
 
 	if callOI != "" {
 		c.CallOI, err = strconv.ParseFloat(callOI, 64)
@@ -327,7 +325,7 @@ func (c *TakerFlow) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	c.TS = timestamp
 
 	if callBuyVol != "" {
 		c.CallBlockVol, err = strconv.ParseFloat(callBuyVol, 64)

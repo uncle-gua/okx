@@ -4,50 +4,49 @@ import (
 	"encoding/json"
 	"fmt"
 	"strconv"
-	"time"
 
-	okex "github.com/uncle-gua/okx"
+	"github.com/uncle-gua/okx"
 )
 
 type (
 	Ticker struct {
-		InstID    string              `json:"instId"`
-		Last      okex.JSONFloat64    `json:"last"`
-		LastSz    okex.JSONFloat64    `json:"lastSz"`
-		AskPx     okex.JSONFloat64    `json:"askPx"`
-		AskSz     okex.JSONFloat64    `json:"askSz"`
-		BidPx     okex.JSONFloat64    `json:"bidPx"`
-		BidSz     okex.JSONFloat64    `json:"bidSz"`
-		Open24h   okex.JSONFloat64    `json:"open24h"`
-		High24h   okex.JSONFloat64    `json:"high24h"`
-		Low24h    okex.JSONFloat64    `json:"low24h"`
-		VolCcy24h okex.JSONFloat64    `json:"volCcy24h"`
-		Vol24h    okex.JSONFloat64    `json:"vol24h"`
-		SodUtc0   okex.JSONFloat64    `json:"sodUtc0"`
-		SodUtc8   okex.JSONFloat64    `json:"sodUtc8"`
-		InstType  okex.InstrumentType `json:"instType"`
-		TS        okex.JSONTime       `json:"ts"`
+		InstID    string             `json:"instId"`
+		Last      float64            `json:"last,string"`
+		LastSz    float64            `json:"lastSz,string"`
+		AskPx     float64            `json:"askPx,string"`
+		AskSz     float64            `json:"askSz,string"`
+		BidPx     float64            `json:"bidPx,string"`
+		BidSz     float64            `json:"bidSz,string"`
+		Open24h   float64            `json:"open24h,string"`
+		High24h   float64            `json:"high24h,string"`
+		Low24h    float64            `json:"low24h,string"`
+		VolCcy24h float64            `json:"volCcy24h,string"`
+		Vol24h    float64            `json:"vol24h,string"`
+		SodUtc0   float64            `json:"sodUtc0,string"`
+		SodUtc8   float64            `json:"sodUtc8,string"`
+		InstType  okx.InstrumentType `json:"instType"`
+		TS        int64              `json:"ts,string"`
 	}
 	IndexTicker struct {
-		InstID  string           `json:"instId"`
-		IdxPx   okex.JSONFloat64 `json:"idxPx"`
-		High24h okex.JSONFloat64 `json:"high24h"`
-		Low24h  okex.JSONFloat64 `json:"low24h"`
-		Open24h okex.JSONFloat64 `json:"open24h"`
-		SodUtc0 okex.JSONFloat64 `json:"sodUtc0"`
-		SodUtc8 okex.JSONFloat64 `json:"sodUtc8"`
-		TS      okex.JSONTime    `json:"ts"`
+		InstID  string  `json:"instId"`
+		IdxPx   float64 `json:"idxPx,string"`
+		High24h float64 `json:"high24h,string"`
+		Low24h  float64 `json:"low24h,string"`
+		Open24h float64 `json:"open24h,string"`
+		SodUtc0 float64 `json:"sodUtc0,string"`
+		SodUtc8 float64 `json:"sodUtc8,string"`
+		TS      int64   `json:"ts,string"`
 	}
 	OrderBook struct {
-		Asks []*OrderBookEntity `json:"asks"`
-		Bids []*OrderBookEntity `json:"bids"`
-		TS   okex.JSONTime      `json:"ts"`
+		Asks []OrderBookEntity `json:"asks"`
+		Bids []OrderBookEntity `json:"bids"`
+		TS   int64             `json:"ts,string"`
 	}
 	OrderBookWs struct {
-		Asks     []*OrderBookEntity `json:"asks"`
-		Bids     []*OrderBookEntity `json:"bids"`
-		Checksum int                `json:"checksum"`
-		TS       okex.JSONTime      `json:"ts"`
+		Asks     []OrderBookEntity `json:"asks"`
+		Bids     []OrderBookEntity `json:"bids"`
+		Checksum int               `json:"checksum"`
+		TS       int64             `json:"ts,string"`
 	}
 	OrderBookEntity struct {
 		DepthPrice      float64
@@ -62,40 +61,40 @@ type (
 		C      float64
 		Vol    float64
 		VolCcy float64
-		TS     okex.JSONTime
+		TS     int64
 	}
 	IndexCandle struct {
 		O  float64
 		H  float64
 		L  float64
 		C  float64
-		TS okex.JSONTime
+		TS int64
 	}
 	Trade struct {
-		InstID  string           `json:"instId"`
-		TradeID okex.JSONFloat64 `json:"tradeId"`
-		Px      okex.JSONFloat64 `json:"px"`
-		Sz      okex.JSONFloat64 `json:"sz"`
-		Side    okex.TradeSide   `json:"side"`
-		TS      okex.JSONTime    `json:"ts"`
+		InstID  string        `json:"instId"`
+		TradeID float64       `json:"tradeId,string"`
+		Px      float64       `json:"px,string"`
+		Sz      float64       `json:"sz,string"`
+		Side    okx.TradeSide `json:"side"`
+		TS      int64         `json:"ts,string"`
 	}
 	TotalVolume24H struct {
-		VolUsd okex.JSONFloat64 `json:"volUsd"`
-		VolCny okex.JSONFloat64 `json:"volCny"`
-		TS     okex.JSONTime    `json:"ts"`
+		VolUsd float64 `json:"volUsd,string"`
+		VolCny float64 `json:"volCny,string"`
+		TS     int64   `json:"ts,string"`
 	}
 	IndexComponent struct {
-		Index      string           `json:"index"`
-		Last       okex.JSONFloat64 `json:"last"`
-		Components []*Component     `json:"components"`
-		TS         okex.JSONTime    `json:"ts"`
+		Index      string      `json:"index"`
+		Last       float64     `json:"last,string"`
+		Components []Component `json:"components"`
+		TS         int64       `json:"ts,string"`
 	}
 	Component struct {
-		Exch   string           `json:"exch"`
-		Symbol string           `json:"symbol"`
-		SymPx  okex.JSONFloat64 `json:"symPx"`
-		Wgt    okex.JSONFloat64 `json:"wgt"`
-		CnvPx  okex.JSONFloat64 `json:"cnvPx"`
+		Exch   string  `json:"exch"`
+		Symbol string  `json:"symbol"`
+		SymPx  float64 `json:"symPx,string"`
+		Wgt    float64 `json:"wgt,string"`
+		CnvPx  float64 `json:"cnvPx,string"`
 	}
 )
 
@@ -152,7 +151,7 @@ func (c *Candle) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	c.TS = timestamp
 
 	c.O, err = strconv.ParseFloat(o, 64)
 	if err != nil {
@@ -206,7 +205,7 @@ func (c *IndexCandle) UnmarshalJSON(buf []byte) error {
 	if err != nil {
 		return err
 	}
-	*(*time.Time)(&c.TS) = time.UnixMilli(timestamp)
+	c.TS = timestamp
 
 	c.O, err = strconv.ParseFloat(o, 64)
 	if err != nil {

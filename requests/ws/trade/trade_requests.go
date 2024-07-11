@@ -1,22 +1,22 @@
 package trade
 
-import okex "github.com/uncle-gua/okx"
+import "github.com/uncle-gua/okx"
 
 type (
 	PlaceOrder struct {
-		ID         string            `json:"-"`
-		InstID     string            `json:"instId"`
-		Ccy        string            `json:"ccy,omitempty"`
-		ClOrdID    string            `json:"clOrdId,omitempty"`
-		Tag        string            `json:"tag,omitempty"`
-		ReduceOnly bool              `json:"reduceOnly,omitempty"`
-		Sz         float64           `json:"sz,string"`
-		Px         float64           `json:"px,omitempty,string"`
-		TdMode     okex.TradeMode    `json:"tdMode"`
-		Side       okex.OrderSide    `json:"side"`
-		PosSide    okex.PositionSide `json:"posSide,omitempty"`
-		OrdType    okex.OrderType    `json:"ordType"`
-		TgtCcy     okex.QuantityType `json:"tgtCcy,omitempty"`
+		ID         string           `json:"-"`
+		InstID     string           `json:"instId"`
+		Ccy        string           `json:"ccy,omitempty"`
+		ClOrdID    string           `json:"clOrdId,omitempty"`
+		Tag        string           `json:"tag,omitempty"`
+		ReduceOnly bool             `json:"reduceOnly,omitempty"`
+		Sz         float64          `json:"sz,string"`
+		Px         float64          `json:"px,omitempty,string"`
+		TdMode     okx.TradeMode    `json:"tdMode"`
+		Side       okx.OrderSide    `json:"side"`
+		PosSide    okx.PositionSide `json:"posSide,omitempty"`
+		OrdType    okx.OrderType    `json:"ordType"`
+		TgtCcy     okx.QuantityType `json:"tgtCcy,omitempty"`
 	}
 	CancelOrder struct {
 		ID      string `json:"-"`

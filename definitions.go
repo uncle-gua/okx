@@ -50,9 +50,9 @@ type (
 	WithdrawalDestination uint8
 	WithdrawalState       int8
 
-	JSONFloat64 float64
-	JSONInt64   int64
-	JSONTime    time.Time
+	// JSONFloat64 float64
+	// JSONInt64 int64
+	// JSONTime time.Time
 
 	ClientError error
 )
@@ -299,47 +299,50 @@ const (
 	CandleStick1m  = CandleStickWsBarSize("candle1m")
 )
 
-func (t *JSONTime) String() string { return (time.Time)(*t).String() }
+// func (t *JSONTime) String() string { return (time.Time)(*t).String() }
 
-func (t *JSONTime) UnmarshalJSON(s []byte) (err error) {
-	r := strings.Replace(string(s), `"`, ``, -1)
-	if r == "" {
-		return
-	}
+// func (t *JSONTime) UnmarshalJSON(s []byte) (err error) {
+// 	r := strings.Replace(string(s), `"`, ``, -1)
+// 	if r == "" {
+// 		return
+// 	}
 
-	q, err := strconv.ParseInt(r, 10, 64)
-	if err != nil {
-		return err
-	}
-	*(*time.Time)(t) = time.UnixMilli(q)
-	return
-}
-func (t *JSONFloat64) UnmarshalJSON(s []byte) (err error) {
-	r := strings.Replace(string(s), `"`, ``, -1)
-	if r == "" {
-		return
-	}
+// 	q, err := strconv.ParseInt(r, 10, 64)
+// 	if err != nil {
+// 		return err
+// 	}
+// 	*(*time.Time)(t) = time.UnixMilli(q)
+// 	return
+// }
 
-	q, err := strconv.ParseFloat(r, 64)
-	if err != nil {
-		return err
-	}
-	*(*float64)(t) = q
-	return
-}
-func (t *JSONInt64) UnmarshalJSON(s []byte) (err error) {
-	r := strings.Replace(string(s), `"`, ``, -1)
-	if r == "" {
-		return
-	}
+// func (t *JSONFloat64) UnmarshalJSON(s []byte) (err error) {
+// 	r := strings.Replace(string(s), `"`, ``, -1)
+// 	if r == "" {
+// 		return
+// 	}
 
-	q, err := strconv.ParseInt(r, 10, 64)
-	if err != nil {
-		return err
-	}
-	*(*int64)(t) = q
-	return
-}
+//		q, err := strconv.ParseFloat(r, 64)
+//		if err != nil {
+//			return err
+//		}
+//		*(*float64)(t) = q
+//		return
+//	}
+
+// func (t *JSONInt64) UnmarshalJSON(s []byte) (err error) {
+// 	r := strings.Replace(string(s), `"`, ``, -1)
+// 	if r == "" {
+// 		return
+// 	}
+
+// 	q, err := strconv.ParseInt(r, 10, 64)
+// 	if err != nil {
+// 		return err
+// 	}
+// 	*(*int64)(t) = q
+// 	return
+// }
+
 func (t *WithdrawalState) UnmarshalJSON(s []byte) (err error) {
 	r := strings.Replace(string(s), `"`, ``, -1)
 	if r == "" {
@@ -353,6 +356,7 @@ func (t *WithdrawalState) UnmarshalJSON(s []byte) (err error) {
 	*(*int8)(t) = int8(q)
 	return
 }
+
 func (t *BillType) UnmarshalJSON(s []byte) (err error) {
 	r := strings.Replace(string(s), `"`, ``, -1)
 	if r == "" {
@@ -366,6 +370,7 @@ func (t *BillType) UnmarshalJSON(s []byte) (err error) {
 	*(*uint8)(t) = uint8(q)
 	return
 }
+
 func (t *BillSubType) UnmarshalJSON(s []byte) (err error) {
 	r := strings.Replace(string(s), `"`, ``, -1)
 	if r == "" {
@@ -379,6 +384,7 @@ func (t *BillSubType) UnmarshalJSON(s []byte) (err error) {
 	*(*uint8)(t) = uint8(q)
 	return
 }
+
 func (t *FeeCategory) UnmarshalJSON(s []byte) (err error) {
 	r := strings.Replace(string(s), `"`, ``, -1)
 	if r == "" {
@@ -392,6 +398,7 @@ func (t *FeeCategory) UnmarshalJSON(s []byte) (err error) {
 	*(*uint8)(t) = uint8(q)
 	return
 }
+
 func (t *AccountType) UnmarshalJSON(s []byte) (err error) {
 	r := strings.Replace(string(s), `"`, ``, -1)
 	if r == "" {
@@ -405,6 +412,7 @@ func (t *AccountType) UnmarshalJSON(s []byte) (err error) {
 	*(*uint8)(t) = uint8(q)
 	return
 }
+
 func (t *DepositState) UnmarshalJSON(s []byte) (err error) {
 	r := strings.Replace(string(s), `"`, ``, -1)
 	if r == "" {

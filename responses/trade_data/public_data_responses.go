@@ -12,27 +12,27 @@ type (
 	}
 	GetTakerVolume struct {
 		responses.Basic
-		TakerVolumes []*tradedata.TakerVolume `json:"data,omitempty"`
+		TakerVolumes []tradedata.TakerVolume `json:"data,omitempty"`
 	}
 	GetRatio struct {
 		responses.Basic
-		Ratios []*tradedata.Ratio `json:"data,omitempty"`
+		Ratios []tradedata.Ratio `json:"data,omitempty"`
 	}
 	GetOpenInterestAndVolume struct {
 		responses.Basic
-		InterestAndVolumeRatios []*tradedata.InterestAndVolumeRatio `json:"data,omitempty"`
+		InterestAndVolumeRatios []tradedata.InterestAndVolumeRatio `json:"data,omitempty"`
 	}
 	GetPutCallRatio struct {
 		responses.Basic
-		PutCallRatios []*tradedata.PutCallRatio `json:"data,omitempty"`
+		PutCallRatios []tradedata.PutCallRatio `json:"data,omitempty"`
 	}
 	GetOpenInterestAndVolumeExpiry struct {
 		responses.Basic
-		InterestAndVolumeExpires []*tradedata.InterestAndVolumeExpiry `json:"data,omitempty"`
+		InterestAndVolumeExpires []tradedata.InterestAndVolumeExpiry `json:"data,omitempty"`
 	}
 	GetOpenInterestAndVolumeStrike struct {
 		responses.Basic
-		InterestAndVolumeStrikes []*tradedata.InterestAndVolumeStrike `json:"data,omitempty"`
+		InterestAndVolumeStrikes []tradedata.InterestAndVolumeStrike `json:"data,omitempty"`
 	}
 	GetTakerFlow struct {
 		responses.Basic

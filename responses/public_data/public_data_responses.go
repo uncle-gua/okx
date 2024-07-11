@@ -8,55 +8,55 @@ import (
 type (
 	GetInstruments struct {
 		responses.Basic
-		Instruments []*publicdata.Instrument `json:"data,omitempty"`
+		Instruments []publicdata.Instrument `json:"data,omitempty"`
 	}
 	GetDeliveryExerciseHistory struct {
 		responses.Basic
-		Histories []*publicdata.DeliveryExerciseHistory `json:"data,omitempty"`
+		Histories []publicdata.DeliveryExerciseHistory `json:"data,omitempty"`
 	}
 	GetOpenInterest struct {
 		responses.Basic
-		OpenInterests []*publicdata.OpenInterest `json:"data,omitempty"`
+		OpenInterests []publicdata.OpenInterest `json:"data,omitempty"`
 	}
 	GetFundingRate struct {
 		responses.Basic
-		FundingRates []*publicdata.FundingRate `json:"data,omitempty"`
+		FundingRates []publicdata.FundingRate `json:"data,omitempty"`
 	}
 	GetLimitPrice struct {
 		responses.Basic
-		LimitPrices []*publicdata.LimitPrice `json:"data,omitempty"`
+		LimitPrices []publicdata.LimitPrice `json:"data,omitempty"`
 	}
 	GetOptionMarketData struct {
 		responses.Basic
-		OptionMarketData []*publicdata.OptionMarketData `json:"data,omitempty"`
+		OptionMarketData []publicdata.OptionMarketData `json:"data,omitempty"`
 	}
 	GetEstimatedDeliveryExercisePrice struct {
 		responses.Basic
-		EstimatedDeliveryExercisePrices []*publicdata.EstimatedDeliveryExercisePrice `json:"data,omitempty"`
+		EstimatedDeliveryExercisePrices []publicdata.EstimatedDeliveryExercisePrice `json:"data,omitempty"`
 	}
 	GetDiscountRateAndInterestFreeQuota struct {
 		responses.Basic
-		GetDiscountRateAndInterestFreeQuotas []*publicdata.GetDiscountRateAndInterestFreeQuota `json:"data,omitempty"`
+		GetDiscountRateAndInterestFreeQuotas []publicdata.GetDiscountRateAndInterestFreeQuota `json:"data,omitempty"`
 	}
 	GetSystemTime struct {
 		responses.Basic
-		SystemTimes []*publicdata.SystemTime `json:"data,omitempty"`
+		SystemTimes []publicdata.SystemTime `json:"data,omitempty"`
 	}
 	GetLiquidationOrders struct {
 		responses.Basic
-		LiquidationOrders []*publicdata.LiquidationOrder `json:"data,omitempty"`
+		LiquidationOrders []publicdata.LiquidationOrder `json:"data,omitempty"`
 	}
 	GetMarkPrice struct {
 		responses.Basic
-		MarkPrices []*publicdata.MarkPrice `json:"data,omitempty"`
+		MarkPrices []publicdata.MarkPrice `json:"data,omitempty"`
 	}
 	GetPositionTiers struct {
 		responses.Basic
-		PositionTiers []*publicdata.PositionTier `json:"data,omitempty"`
+		PositionTiers []publicdata.PositionTier `json:"data,omitempty"`
 	}
 	GetInterestRateAndLoanQuota struct {
 		responses.Basic
-		InterestRateAndLoanQuotas []*publicdata.InterestRateAndLoanQuota `json:"data,omitempty"`
+		InterestRateAndLoanQuotas []publicdata.InterestRateAndLoanQuota `json:"data,omitempty"`
 	}
 	GetUnderlying struct {
 		responses.Basic

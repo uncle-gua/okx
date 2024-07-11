@@ -3,6 +3,7 @@ package api
 import (
 	"context"
 
+	"github.com/uncle-gua/okx"
 	okex "github.com/uncle-gua/okx"
 	"github.com/uncle-gua/okx/api/rest"
 	"github.com/uncle-gua/okx/api/ws"
@@ -16,19 +17,19 @@ type Client struct {
 }
 
 // NewClient returns a pointer to a fresh Client
-func NewClient(ctx context.Context, apiKey, secretKey, passphrase string, destination okex.Destination) (*Client, error) {
-	restURL := okex.RestURL
-	wsPubURL := okex.PublicWsURL
-	wsPriURL := okex.PrivateWsURL
+func NewClient(ctx context.Context, apiKey, secretKey, passphrase string, destination okx.Destination) (*Client, error) {
+	restURL := okx.RestURL
+	wsPubURL := okx.PublicWsURL
+	wsPriURL := okx.PrivateWsURL
 	switch destination {
-	case okex.AwsServer:
-		restURL = okex.AwsRestURL
-		wsPubURL = okex.AwsPublicWsURL
-		wsPriURL = okex.AwsPrivateWsURL
-	case okex.DemoServer:
-		restURL = okex.DemoRestURL
-		wsPubURL = okex.DemoPublicWsURL
-		wsPriURL = okex.DemoPrivateWsURL
+	case okx.AwsServer:
+		restURL = okx.AwsRestURL
+		wsPubURL = okx.AwsPublicWsURL
+		wsPriURL = okx.AwsPrivateWsURL
+	case okx.DemoServer:
+		restURL = okx.DemoRestURL
+		wsPubURL = okx.DemoPublicWsURL
+		wsPriURL = okx.DemoPrivateWsURL
 	}
 
 	r := rest.NewClient(apiKey, secretKey, passphrase, restURL, destination)

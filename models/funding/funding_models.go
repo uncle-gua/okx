@@ -1,6 +1,6 @@
 package funding
 
-import okex "github.com/uncle-gua/okx"
+import "github.com/uncle-gua/okx"
 
 type (
 	Currency struct {
@@ -21,72 +21,72 @@ type (
 		AvailBal  string `json:"availBal"`
 	}
 	Transfer struct {
-		TransID string           `json:"transId"`
-		Ccy     string           `json:"ccy"`
-		Amt     okex.JSONFloat64 `json:"amt"`
-		From    okex.AccountType `json:"from,string"`
-		To      okex.AccountType `json:"to,string"`
+		TransID string          `json:"transId"`
+		Ccy     string          `json:"ccy"`
+		Amt     float64         `json:"amt,string"`
+		From    okx.AccountType `json:"from,string"`
+		To      okx.AccountType `json:"to,string"`
 	}
 	Bill struct {
-		BillID string           `json:"billId"`
-		Ccy    string           `json:"ccy"`
-		Bal    okex.JSONFloat64 `json:"bal"`
-		BalChg okex.JSONFloat64 `json:"balChg"`
-		Type   okex.BillType    `json:"type,string"`
-		TS     okex.JSONTime    `json:"ts"`
+		BillID string       `json:"billId"`
+		Ccy    string       `json:"ccy"`
+		Bal    float64      `json:"bal,string"`
+		BalChg float64      `json:"balChg,string"`
+		Type   okx.BillType `json:"type,string"`
+		TS     int64        `json:"ts,string"`
 	}
 	DepositAddress struct {
-		Addr     string           `json:"addr"`
-		Tag      string           `json:"tag,omitempty"`
-		Memo     string           `json:"memo,omitempty"`
-		PmtID    string           `json:"pmtId,omitempty"`
-		Ccy      string           `json:"ccy"`
-		Chain    string           `json:"chain"`
-		CtAddr   string           `json:"ctAddr"`
-		Selected bool             `json:"selected"`
-		To       okex.AccountType `json:"to,string"`
-		TS       okex.JSONTime    `json:"ts"`
+		Addr     string          `json:"addr"`
+		Tag      string          `json:"tag,omitempty"`
+		Memo     string          `json:"memo,omitempty"`
+		PmtID    string          `json:"pmtId,omitempty"`
+		Ccy      string          `json:"ccy"`
+		Chain    string          `json:"chain"`
+		CtAddr   string          `json:"ctAddr"`
+		Selected bool            `json:"selected"`
+		To       okx.AccountType `json:"to,string"`
+		TS       int64           `json:"ts,string"`
 	}
 	DepositHistory struct {
-		Ccy   string            `json:"ccy"`
-		Chain string            `json:"chain"`
-		TxID  string            `json:"txId"`
-		From  string            `json:"from"`
-		To    string            `json:"to"`
-		DepId string            `json:"depId"`
-		Amt   okex.JSONFloat64  `json:"amt"`
-		State okex.DepositState `json:"state,string"`
-		TS    okex.JSONTime     `json:"ts"`
-	}
-	Withdrawal struct {
 		Ccy   string           `json:"ccy"`
 		Chain string           `json:"chain"`
-		WdID  okex.JSONInt64   `json:"wdId"`
-		Amt   okex.JSONFloat64 `json:"amt"`
+		TxID  string           `json:"txId"`
+		From  string           `json:"from"`
+		To    string           `json:"to"`
+		DepId string           `json:"depId"`
+		Amt   float64          `json:"amt,string"`
+		State okx.DepositState `json:"state,string"`
+		TS    int64            `json:"ts,string"`
+	}
+	Withdrawal struct {
+		Ccy   string  `json:"ccy"`
+		Chain string  `json:"chain"`
+		WdID  int64   `json:"wdId,string"`
+		Amt   float64 `json:"amt,string"`
 	}
 	WithdrawalHistory struct {
-		Ccy   string               `json:"ccy"`
-		Chain string               `json:"chain"`
-		TxID  string               `json:"txId"`
-		From  string               `json:"from"`
-		To    string               `json:"to"`
-		Tag   string               `json:"tag,omitempty"`
-		PmtID string               `json:"pmtId,omitempty"`
-		Memo  string               `json:"memo,omitempty"`
-		Amt   okex.JSONFloat64     `json:"amt"`
-		Fee   okex.JSONFloat64     `json:"fee"`
-		WdID  okex.JSONInt64       `json:"wdId"`
-		State okex.WithdrawalState `json:"state,string"`
-		TS    okex.JSONTime        `json:"ts"`
+		Ccy   string              `json:"ccy"`
+		Chain string              `json:"chain"`
+		TxID  string              `json:"txId"`
+		From  string              `json:"from"`
+		To    string              `json:"to"`
+		Tag   string              `json:"tag,omitempty"`
+		PmtID string              `json:"pmtId,omitempty"`
+		Memo  string              `json:"memo,omitempty"`
+		Amt   float64             `json:"amt,string"`
+		Fee   float64             `json:"fee,string"`
+		WdID  int64               `json:"wdId,string"`
+		State okx.WithdrawalState `json:"state,string"`
+		TS    int64               `json:"ts,string"`
 	}
 	PiggyBank struct {
-		Ccy  string           `json:"ccy"`
-		Amt  okex.JSONFloat64 `json:"amt"`
-		Side okex.ActionType  `json:"side,string"`
+		Ccy  string         `json:"ccy"`
+		Amt  float64        `json:"amt,string"`
+		Side okx.ActionType `json:"side,string"`
 	}
 	PiggyBankBalance struct {
-		Ccy      string           `json:"ccy"`
-		Amt      okex.JSONFloat64 `json:"amt"`
-		Earnings okex.JSONFloat64 `json:"earnings"`
+		Ccy      string  `json:"ccy"`
+		Amt      float64 `json:"amt,string"`
+		Earnings float64 `json:"earnings,string"`
 	}
 )

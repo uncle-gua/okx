@@ -1,10 +1,10 @@
 package public
 
-import okex "github.com/uncle-gua/okx"
+import "github.com/uncle-gua/okx"
 
 type (
 	Instruments struct {
-		InstType okex.InstrumentType `json:"instType"`
+		InstType okx.InstrumentType `json:"instType"`
 	}
 	Tickers struct {
 		InstID string `json:"instId"`
@@ -13,23 +13,23 @@ type (
 		InstID string `json:"instId"`
 	}
 	Candlesticks struct {
-		InstID  string                    `json:"instId"`
-		Channel okex.CandleStickWsBarSize `json:"channel"`
+		InstID  string                   `json:"instId"`
+		Channel okx.CandleStickWsBarSize `json:"channel"`
 	}
 	Trades struct {
 		InstID string `json:"instId"`
 	}
 	EstimatedDeliveryExercisePrice struct {
-		InstID   string              `json:"instId"`
-		Uly      string              `json:"uly,omitempty"`
-		InstType okex.InstrumentType `json:"instType,omitempty"`
+		InstID   string             `json:"instId"`
+		Uly      string             `json:"uly,omitempty"`
+		InstType okx.InstrumentType `json:"instType,omitempty"`
 	}
 	MarkPrice struct {
 		InstID string `json:"instId"`
 	}
 	MarkPriceCandlesticks struct {
-		InstID  string                    `json:"instId"`
-		Channel okex.CandleStickWsBarSize `json:"channel"`
+		InstID  string                   `json:"instId"`
+		Channel okx.CandleStickWsBarSize `json:"channel"`
 	}
 	PriceLimit struct {
 		InstID string `json:"instId"`

@@ -1,7 +1,7 @@
 package ws
 
 import (
-	okex "github.com/uncle-gua/okx"
+	"github.com/uncle-gua/okx"
 	requests "github.com/uncle-gua/okx/requests/ws/trade"
 )
 
@@ -27,12 +27,12 @@ func NewTrade(c *ClientWs) *Trade {
 // https://www.okex.com/docs-v5/en/#websocket-api-trade-place-multiple-orders
 func (c *Trade) PlaceOrder(req ...requests.PlaceOrder) error {
 	tmpArgs := make([]map[string]string, len(req))
-	op := okex.OrderOperation
+	op := okx.OrderOperation
 	if len(req) > 1 {
-		op = okex.BatchOrderOperation
+		op = okx.BatchOrderOperation
 	}
 	for i, order := range req {
-		tmpArgs[i] = okex.S2M(order)
+		tmpArgs[i] = okx.S2M(order)
 	}
 	return c.Send(true, op, tmpArgs, map[string]string{"id": req[0].ID})
 }
@@ -47,12 +47,12 @@ func (c *Trade) PlaceOrder(req ...requests.PlaceOrder) error {
 // https://www.okex.com/docs-v5/en/#websocket-api-trade-cancel-multiple-orders
 func (c *Trade) CancelOrder(req ...requests.CancelOrder) error {
 	tmpArgs := make([]map[string]string, len(req))
-	op := okex.CancelOrderOperation
+	op := okx.CancelOrderOperation
 	if len(req) > 1 {
-		op = okex.BatchCancelOrderOperation
+		op = okx.BatchCancelOrderOperation
 	}
 	for i, order := range req {
-		tmpArgs[i] = okex.S2M(order)
+		tmpArgs[i] = okx.S2M(order)
 	}
 	return c.Send(true, op, tmpArgs, map[string]string{"id": req[0].ID})
 }
@@ -67,12 +67,12 @@ func (c *Trade) CancelOrder(req ...requests.CancelOrder) error {
 // https://www.okex.com/docs-v5/en/#websocket-api-trade-amend-multiple-orders
 func (c *Trade) AmendOrder(req ...requests.AmendOrder) error {
 	tmpArgs := make([]map[string]string, len(req))
-	op := okex.AmendOrderOperation
+	op := okx.AmendOrderOperation
 	if len(req) > 1 {
-		op = okex.BatchAmendOrderOperation
+		op = okx.BatchAmendOrderOperation
 	}
 	for i, order := range req {
-		tmpArgs[i] = okex.S2M(order)
+		tmpArgs[i] = okx.S2M(order)
 	}
 	return c.Send(true, op, tmpArgs, map[string]string{"id": req[0].ID})
 }

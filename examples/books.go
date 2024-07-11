@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
-	okex "github.com/uncle-gua/okx"
+	"github.com/uncle-gua/okx"
 	"github.com/uncle-gua/okx/api"
 	"github.com/uncle-gua/okx/events/public"
 	requests "github.com/uncle-gua/okx/requests/ws/public"
@@ -29,7 +29,7 @@ func main() {
 	secretKey := ""
 	passphrase := ""
 	ctx := context.Background()
-	client, err := api.NewClient(ctx, apiKey, secretKey, passphrase, okex.NormalServer)
+	client, err := api.NewClient(ctx, apiKey, secretKey, passphrase, okx.NormalServer)
 	if err != nil {
 		log.Fatalln(err)
 	}
